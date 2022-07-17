@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Welcome to CodeJava Home</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+   	<style>
+   	body{
+   	  background-image:url("https://raw.githubusercontent.com/sanchit2107/Flight-Management-System/master/FMS-Level-3-Angular/src/assets/airplane-wing-sky.jpg")
+   	}
+   	</style>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>Online Flight Reservation System</h1>
+        <h3><a th:href="@{/demo}">Login</a></h3>
+        <h3><a th:href="@{/register}">Register</a></h3>
+        <!--  <h3><a href="#">Login</a></h3>-->
+    </div>
+     
+</body>
+</html>

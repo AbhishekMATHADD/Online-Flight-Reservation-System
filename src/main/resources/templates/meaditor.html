@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+body{
+        background-image:url("https://www.dlr.de/content/en/images/2021/2/planned-passenger-aircraft-from-boom-supersonic.jpg?__blob=normal&v=3__ifc1920w");
+        background-repeat:no-repeat;
+        background-size: cover;
+    }
+     td{
+        border:1px solid  black;
+    }
+</style>
+</head>
+<body>
+	<!--<th:block th:each="i: ${#numbers.sequence(1, 5)}"></th:block>
+	  <a th:href="@{'/demo/flight_details/book_ticket/save/passenger/' + ${reservation.id}}" >Click Here To fill Passenger details</a>-->
+	<div align="center">
+        
+        
+       
+        <form th:action="@{/demo/flight_details/book_ticket/save/passenger/save}" th:object="${customer}" method="post">
+            <table>
+            <th:block th:each="i: ${#numbers.sequence(1, reservation.noOfSetas)}">
+           
+            <tbody>
+            <tr>
+            <td>
+                <h2>Reservation Id</h2>
+        	<div>                            
+                <input class="form-control me-2" type="text" th:field="${reservation.id}"  readonly="readonly"><br>
+            </div>
+                <h2>passengerName</h2>
+            <div >                            
+                <input class="form-control me-2" type="text" placeholder="Passenger Name" th:field="*{passengerName}"><br>
+            </div>
+            </td >
+
+            
+            <td>
+                <h2>Age</h2>
+            <div>                            
+                <input class="form-control me-2" type="text" placeholder="Age" th:filed="*{age}"><br>
+            </div>
+
+            <h2>Gender</h2>
+            <div>                            
+                <select class="form-control" id="exampleFormControlSelect1" th:filed="*{gender}">
+                    <option th:value="'Male'" th:text="Male">Male</option>
+                    <option th:value="'Female'" th:text="Female">Female</option>
+                  </select>
+            </div>
+			</td>
+			<td>
+           
+            </td>
+           </tbody>
+           </th:block>
+           <button   type="submit" role="button">Book</button>
+        </table>
+        </form>
+        </div>
+
+</body>
+</html>

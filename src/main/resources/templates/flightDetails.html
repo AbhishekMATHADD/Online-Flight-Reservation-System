@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>List Users</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    
+     <style>
+        .form-group{
+            padding-bottom: 30px;
+        }
+
+        .col-2 {
+            flex: 0 0 auto;
+            width: 11%;
+        }
+
+        .col-5 {
+            flex: 0 0 auto;
+            width: 37.66666667%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container text-center">
+        <div>
+            <h1>List of Users</h1>
+        </div>
+        <div>
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Flight ID</th>
+                        <th>Flight Name</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Travel Duration</th>
+                        <th>Reservation Capacity</th>
+                        <th>Reservation Type</th>
+                        <th>Seating Capcity</th>
+                        <th>Book</th>
+                        <th sec:authorize="hasAnyAuthority('Admin')">Edit</th>
+                        <th sec:authorize="hasAnyAuthority('Admin')">Delete</th>
+                        <th sec:authorize="hasAnyAuthority('Admin')">Add Schedule</th>
+                    </tr>
+                </thead>
+                  <tbody>
+                    <tr th:each="flight: ${flightList} ">
+                        <td th:text="${flight.id}">Flight ID</td>
+                        <td th:text="${flight.flightName}">Flight Name</td>
+                        <td th:text="${flight.source}">Source</td>
+                        <td th:text="${flight.desination}">Destination</td>
+                        <td th:text="${flight.estimatedTravelDuration}">Travel Duration</td>
+                        <td th:text="${flight.reservationCapacity}">Reservation Capacity</td>
+                        <td th:text="${flight.reservationType}">Reservation Type</td>  
+                        <td th:text="${flight.seatingCapacity}">Seating Capcity</td>
+                        <!--  <td><input type="submit" value="Book"></td>
+                        <td><input type="submit" value="Edit"></td>
+                        <td><input type="submit" value="Delete"></td>-->
+                        <td><a th:href="@{'/demo/flight_details/book_ticket/' + ${flight.id}}" >Book</a></td>
+                        <td sec:authorize="hasAnyAuthority('Admin')"><a th:href="@{'/demo/flight_details/edit_flight/' + ${flight.id}}" >Edit</a></td>
+                       	<td sec:authorize="hasAnyAuthority('Admin')"><a th:href="@{'/demo/flight_details/delete_flight/' + ${flight.id}}"  onclick="return confirm('Are you sure you want to Remove?');">Delete</a></td>
+                       	<td sec:authorize="hasAnyAuthority('Admin')"><a th:href="@{'/demo/flight_details/add_schedule/'+ ${flight.id}}">Add</a></td>
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    
+</body>
+</html>

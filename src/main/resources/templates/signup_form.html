@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+       }
+      
+      .card-holder{
+        width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+      }
+      
+      .card{
+        background: #fcfcfc;
+        padding: 20px;
+        width: 80%;
+        max-width: 750px;
+        text-align: center;
+        font-family: Arial;
+      }
+
+
+      .form-group{
+        padding-bottom: 20px;
+        }
+
+        .col-2 {
+            flex: 0 0 auto;
+            width: 15%;
+        }
+
+        .col-5 {
+            flex: 0 0 auto;
+            width: 30.66666667%;
+        }
+    </style>
+</head>
+<body>
+    <div align="center">
+        <h1>Registration Page</h1>
+    </div>
+    <div class="card-holder">
+        <div class="card">
+            <table class="table">
+                <tbody>
+                    <form th:action="@{/process_register}" th:object="${user}" method="post">
+                    <div class="m-3">
+                    <tr>
+                        <div class="form-group row">
+                            
+                            <label class="col-2 col-form-label">First Name: </label>
+                            
+                            <div class="col-5">
+                                
+                                <input type="text" class="form-control" th:field="*{firstName}"
+                                required />
+                            </div>
+                        
+                          <label class="col-2 col-form-label"> Last Name</label>
+                          
+                          <div class="col-5">
+                              
+                              <input type="text" class="form-control" th:field="*{lastName}"
+                                      required />
+                          </div>
+                      </div>  
+              </tr>   
+
+              <tr>
+                <div class="form-group row">
+                    
+                    <label class="col-2 col-form-label">Password </label>
+                    
+                    <div class="col-5">
+                        
+                        <input type="password"  class="form-control"  th:field="*{password}"
+                       		required/>
+                    </div>
+                
+                  <label class="col-2 col-form-label">DOB </label>
+                  
+                  <div class="col-5">
+                      
+                      <input type="date"  class="form-control"  th:field="*{dataOfBirth}"
+                              required />
+                  </div>
+              </div>  
+             </tr>  
+             <tr>
+                <div class="form-group row">
+                    
+                    <label class="col-2 col-form-label">Age: </label>
+                    
+                    <div class="col-5">
+                        
+                        <input type="text"  class="form-control"  th:field="*{age}"
+                        required />
+                    </div>
+                  <label class="col-2 col-form-label">Gender: </label>
+                  
+                  <div class="col-5">
+                    <select class="form-control" id="exampleFormControlSelect1"  th:field="*{gender}" required>
+                        <option th:value="'Male'" th:text="Male"></option>
+                        <option th:value="'Female'" th:text="Female"></option>
+                      </select>
+                  </div>
+              </div>  
+            </tr>    
+            <tr>
+                <div class="form-group row">
+                    
+                    <label class="col-2 col-form-label"> Address </label>
+                    
+                    <div class="col-5">
+                        
+                        <input type="text"  class="form-control"  th:field="*{address}"
+                        required />
+                    </div>
+
+                    <label class="col-2 col-form-label"> Phone No </label>
+                    
+                    <div class="col-5">
+                        
+                        <input type="text"  class="form-control"  th:field="*{phoneNo}"
+                        required />
+                    </div>
+              </div>
+              </tr>
+              <tr>
+                <div class="col-16">
+                    <button type="Submit" class="btn btn-primary btn-lg">SignUp</button>
+
+            </div>
+              </tr>
+            </form>
+            </table>
+        </div>
+      <div>
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

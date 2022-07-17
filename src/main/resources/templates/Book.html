@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+
+        body{
+            background-image: url("https://images.unsplash.com/photo-1587019158091-1a103c5dd17f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZmxpZ2h0fGVufDB8fDB8fA%3D%3D&w=1000&q=80");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+       }
+      
+      .card-holder{
+        width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+      }
+      
+      .card{
+        background: #fcfcfc;
+        padding: 20px;
+        width: 80%;
+        max-width: 750px;
+        text-align: center;
+        font-family: Arial;
+      }
+
+
+      .form-group{
+        padding-bottom: 20px;
+        }
+
+        .col-2 {
+            flex: 0 0 auto;
+            width: 15%;
+        }
+
+        .col-5 {
+            flex: 0 0 auto;
+            width: 30.66666667%;
+        }
+    </style>
+</head>
+<body>
+    <div align="center">
+        <h1>Booking Ticket</h1>
+    </div>
+    <div class="card-holder">
+        <div class="card">
+            <table class="table">
+                <tbody>
+                    <form th:action="@{/demo/flight_details/book_ticket/save}" th:object="${reservation}" method="post">
+                    <div class="m-3">
+                    <tr>
+                        <div class="form-group row">
+                            
+                            <label class="col-2 col-form-label">Flight ID </label>
+                            
+                            <div class="col-5">
+                                
+                                <input class="form-control me-2" type="text" th:field="${flight.id}" placeholder="FlightId"  readonly="readonly">
+                            </div>
+                        
+                          <label class="col-2 col-form-label">Date Of Journey </label>
+                          
+                          <div class="col-5">
+                              
+                            <input class="form-control me-2" type="date" placeholder="JourneyDate" th:field="*{dateOfJourney}">
+                          </div>
+                      </div>  
+              </tr>   
+
+              <tr>
+                <div class="form-group row">
+                    
+                    <label class="col-2 col-form-label"> reservationType: </label>
+                    
+                    <div class="col-5">
+                        
+                        <select class="form-control" id="exampleFormControlSelect1" th:field="*{reservationType}">
+                            <option th:value="'FirstClass'" th:text="FirstClass">FirstClass</option>
+                            <option th:value="'MiddleClasss'" th:text="MiddleClasss">MiddleClasss</option>
+                            <option th:value="'BusinessClass'" th:text="BusinessClass">BusinessClass</option>
+                          </select>
+                    </div>
+                
+                  <label class="col-2 col-form-label">No of Seats: </label>
+                  
+                  <div class="col-5">
+                      
+                    <input class="form-control me-2" type="text" placeholder="No Of Seats" th:field="*{noOfSetas}">
+                  </div>
+              </div>  
+             </tr>  
+    
+              <tr>
+                <div class="col-16">
+                    <button type="Submit" class="btn btn-primary btn-lg">Submit</button>
+
+            </div>
+              </tr>
+            </form>
+            </table>
+        </div>
+      <div>
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
