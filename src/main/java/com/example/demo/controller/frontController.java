@@ -12,7 +12,7 @@ import com.example.demo.Model.User;
 import com.example.demo.Service.UserService;
 
 @Controller
-
+// This is the controller
 public class frontController {
 
 	@Autowired
